@@ -6,6 +6,8 @@ import { GlassPane } from "@/liquid-glass/src/GlassPane";
 import { Dog, Sparkles, Youtube } from 'lucide-react';
 import { useState } from "react";
 import { SVGPaneWarpMap } from "@/liquid-glass/src/SVGWarp";
+import { DesktopNag } from "./_components/DesktopNag";
+import dynamic from "next/dynamic";
 
 export default function Home() {
   const [edgeSize, setEdgesize] = useState(20);
@@ -76,6 +78,7 @@ export default function Home() {
           Liquid Glass in Pure CSS Demo by <a href="https://www.linkedin.com/in/mfoulks/" target="_blank">Atlas Foulks</a>
         </span>
       </div>
+      <DesktopNag />
     </>
   );
 }
@@ -88,7 +91,7 @@ interface DebugSliderProps {
   name: string;
 }
 
-export const DebugSlider = (props: DebugSliderProps) => {
+const DebugSlider = (props: DebugSliderProps) => {
   return <div className="flex gap-2 font-normal">
     <div className="basis-64">{props.name}</div>
     <input

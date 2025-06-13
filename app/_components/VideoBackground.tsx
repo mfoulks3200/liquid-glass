@@ -36,6 +36,9 @@ export const VideoBackground = () => {
                     onPlay={() => {
                         setReady(true);
                     }}
+                    onEnded={() => {
+                        setReady(false);
+                    }}
                 />
             </div>
         </div>
