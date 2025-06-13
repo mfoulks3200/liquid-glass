@@ -1,0 +1,12 @@
+.glassPane {
+    background: rgba(255, 255, 255, 0.05);
+    /* background: black; */
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        inset 10px 10px 20px rgba(153, 192, 255, 0.1),
+        inset 2px 2px 5px rgba(195, 218, 255, 0.2),
+        inset -10px -10px 20px rgba(229, 253, 190, 0.1),
+        inset -2px -2px 30px rgba(247, 255, 226, 0.2),
+        0px -10px 20px rgba(0, 0, 0, 0.25);
+}

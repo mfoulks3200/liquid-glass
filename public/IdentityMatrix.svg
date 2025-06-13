@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" preserveAspectRatio="xMidYMid meet" version="1.1" viewBox="0 0 256 256">
+  <defs>
+    <style type="text/css">
+      <![CDATA[
+      .red-gradient {
+        fill: url(#red-gradient);
+      }
+
+      .blue-gradient {
+        fill: url(#blue-gradient);
+        filter: url(#blend-filter);
+      }
+
+      /*
+      ust for demonstration purposes:
+      fallback for older browsers that don't support "mix-blend-mode" in CSS.
+      */
+      .red-symbol {
+        display: none;
+      }
+
+      @supports (mix-blend-mode: screen) {
+        .blue-gradient {
+          filter: none;
+          mix-blend-mode: screen;
+        }
+
+        .red-symbol {
+          display: block;
+        }
+      }
+      ]]>
+    </style>
+
+    <linearGradient id="red-gradient" x1="0" x2="1" y1="0" y2="0" color-interpolation="sRGB" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#FF0000" />
+      <stop offset="100%" stop-color="#FF0000" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="blue-gradient" x1="0" x2="0" y1="0" y2="1" color-interpolation="sRGB" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#0000FF" />
+      <stop offset="100%" stop-color="#0000FF" stop-opacity="0" />
+    </linearGradient>
+
+    <rect id="red-gradient-rect" width="256" height="256" x="0" y="0" class="red-gradient" />
+
+    <filter id="blend-filter" color-interpolation-filters="sRGB">
+      <feImage width="256" height="256" x="0" y="0" result="red" href="#red-gradient-rect" />
+      <feBlend in="red" in2="SourceGraphic" mode="screen" />
+    </filter>
+  </defs>
+
+  <rect width="256" height="256" x="0" y="0" fill="black" />
+  <use href="#red-gradient-rect" class="red-symbol" />
+  <rect width="256" height="256" x="0" y="0" class="blue-gradient" />
+</svg>
