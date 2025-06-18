@@ -3,7 +3,7 @@
 import style from "./page.module.css";
 import { VideoBackground } from "./_components/VideoBackground";
 import { GlassPane } from "@/liquid-glass/src/GlassPane";
-import { Dog, Sparkles, Youtube } from 'lucide-react';
+import { Dog, Sparkles, Youtube } from "lucide-react";
 import { useState } from "react";
 import { SVGPaneWarpMap } from "@/liquid-glass/src/SVGWarp";
 import { DesktopNag } from "./_components/DesktopNag";
@@ -18,13 +18,23 @@ export default function Home() {
   const [overallBlur, setOverallBlur] = useState(2);
   const [showOverlay, setShowOverlay] = useState(0);
 
-
-  const paneWarpMap = <SVGPaneWarpMap width={240} height={240} edgeSize={edgeSize} edgeInset={edgeInset} />;
+  const paneWarpMap = (
+    <SVGPaneWarpMap
+      width={240}
+      height={240}
+      edgeSize={edgeSize}
+      edgeInset={edgeInset}
+    />
+  );
 
   return (
     <>
       <VideoBackground />
-      <div className={"fixed top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex flex-col items-center justify-center gap-16"}>
+      <div
+        className={
+          "fixed top-0 left-0 right-0 bottom-0 w-full h-full z-10 flex flex-col items-center justify-center gap-16"
+        }
+      >
         <GlassPane
           width={200}
           height={200}
@@ -53,12 +63,42 @@ export default function Home() {
           className="p-8 text-base text-white flex items-center justify-center"
         >
           <div className="flex flex-col gap-2 basis-full">
-            <DebugSlider name="Edge Size" max={50} value={edgeSize} onValueChange={(i) => setEdgesize(i)} />
-            <DebugSlider name="Edge Inset" max={50} value={edgeInset} onValueChange={(i) => setEdgeInset(i)} />
-            <DebugSlider name="Displacement" max={100} value={bubbleDisplacement} onValueChange={(i) => setBubbleDisplacement(i)} />
-            <DebugSlider name="Ripples" max={100} value={rippleDisplacement} onValueChange={(i) => setRippleDisplacement(i)} />
-            <DebugSlider name="Chromatic Distance" max={100} value={chromaticDistance} onValueChange={(i) => setChromaticDistance(i)} />
-            <DebugSlider name="Overall Blur" max={100} value={overallBlur} onValueChange={(i) => setOverallBlur(i)} />
+            <DebugSlider
+              name="Edge Size"
+              max={50}
+              value={edgeSize}
+              onValueChange={(i) => setEdgesize(i)}
+            />
+            <DebugSlider
+              name="Edge Inset"
+              max={50}
+              value={edgeInset}
+              onValueChange={(i) => setEdgeInset(i)}
+            />
+            <DebugSlider
+              name="Displacement"
+              max={100}
+              value={bubbleDisplacement}
+              onValueChange={(i) => setBubbleDisplacement(i)}
+            />
+            <DebugSlider
+              name="Ripples"
+              max={100}
+              value={rippleDisplacement}
+              onValueChange={(i) => setRippleDisplacement(i)}
+            />
+            <DebugSlider
+              name="Chromatic Distance"
+              max={100}
+              value={chromaticDistance}
+              onValueChange={(i) => setChromaticDistance(i)}
+            />
+            <DebugSlider
+              name="Overall Blur"
+              max={100}
+              value={overallBlur}
+              onValueChange={(i) => setOverallBlur(i)}
+            />
             {/* <DebugSlider name="Show Overlay" max={1} value={showOverlay} onValueChange={(i) => setShowOverlay(i)} /> */}
           </div>
           {/* <div className="max-w-56 max-h-56 scale-50">
@@ -69,16 +109,28 @@ export default function Home() {
       <div className="z-20 fixed bottom-0 right-0 p-4 flex gap-2">
         <Youtube />
         <span>
-          <a href="https://www.youtube.com/watch?v=LWGJA9i18Co" target="_blank">Upside Down & Inside Out</a> by <a href="https://www.youtube.com/channel/UC194cPvPaGJjhJBEGwG6vxg" target="_blank">OK Go</a>
+          <a href="https://www.youtube.com/watch?v=LWGJA9i18Co" target="_blank">
+            Upside Down & Inside Out
+          </a>{" "}
+          by{" "}
+          <a
+            href="https://www.youtube.com/channel/UC194cPvPaGJjhJBEGwG6vxg"
+            target="_blank"
+          >
+            OK Go
+          </a>
         </span>
       </div>
       <div className="z-20 fixed bottom-0 left-0 p-4 flex gap-2">
         <Dog />
         <span>
-          Liquid Glass in Pure CSS Demo by <a href="https://www.linkedin.com/in/mfoulks/" target="_blank">Atlas Foulks</a>
+          Liquid Glass in Pure CSS Demo by{" "}
+          <a href="https://www.linkedin.com/in/mfoulks/" target="_blank">
+            Atlas Foulks
+          </a>
         </span>
       </div>
-      <DesktopNag />
+      {/* <DesktopNag /> */}
     </>
   );
 }
@@ -92,16 +144,18 @@ interface DebugSliderProps {
 }
 
 const DebugSlider = (props: DebugSliderProps) => {
-  return <div className="flex gap-2 font-normal">
-    <div className="basis-64">{props.name}</div>
-    <input
-      type="range"
-      min="0"
-      max={props.max}
-      value={props.value}
-      onChange={(e) => props.onValueChange(parseInt(e.target.value))}
-      className="basis-full"
-    ></input>
-    <div className="basis-8">{props.value + (props.suffix ?? "")}</div>
-  </div>;
-}
+  return (
+    <div className="flex gap-2 font-normal">
+      <div className="basis-64">{props.name}</div>
+      <input
+        type="range"
+        min="0"
+        max={props.max}
+        value={props.value}
+        onChange={(e) => props.onValueChange(parseInt(e.target.value))}
+        className="basis-full"
+      ></input>
+      <div className="basis-8">{props.value + (props.suffix ?? "")}</div>
+    </div>
+  );
+};
